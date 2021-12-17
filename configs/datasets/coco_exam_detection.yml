@@ -1,0 +1,19 @@
+metric: COCO
+num_classes: 5
+
+TrainDataset:
+  !COCODataSet
+    image_dir: images/train2017
+    anno_path: annotations/instances_train2017_exam.json
+    dataset_dir: /mnt/hdd10tb/Students/phonghh/dataset/COCO
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  !COCODataSet
+    image_dir: images/val2017
+    anno_path: annotations/instances_val2017_exam.json
+    dataset_dir: /mnt/hdd10tb/Students/phonghh/dataset/COCO
+
+TestDataset:
+  !ImageFolder
+    anno_path: annotations/instances_val2017_exam.json
