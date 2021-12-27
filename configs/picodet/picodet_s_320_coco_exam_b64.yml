@@ -2,12 +2,12 @@ _BASE_: [
   '../datasets/coco_exam_detection.yml',
   '../runtime.yml',
   '_base_/picodet_esnet.yml',
-  '_base_/optimizer_300e.yml',
+  '_base_/optimizer_200e.yml',
   '_base_/picodet_320_reader.yml',
 ]
 
 pretrain_weights: https://paddledet.bj.bcebos.com/models/pretrained/ESNet_x0_75_pretrained.pdparams
-weights: output/picodet_s_320_coco_exam/model_final
+weights: output/picodet_s_320_coco_exam_b64/model_final
 find_unused_parameters: True
 use_ema: true
 cycle_epoch: 40
@@ -35,5 +35,9 @@ PicoHead:
 
 # override:
 TrainReader:
-    batch_size: 32
+    batch_size: 64
 
+LearningRate:
+    base_lr: 0.2
+
+worker_num: 1

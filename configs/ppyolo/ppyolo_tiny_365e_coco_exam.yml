@@ -1,0 +1,17 @@
+_BASE_: [
+  '../datasets/coco_exam_detection.yml',
+  '../runtime.yml',
+  './_base_/ppyolo_tiny.yml',
+  './_base_/optimizer_365e.yml',
+  './_base_/ppyolo_tiny_reader.yml',
+]
+
+snapshot_epoch: 1
+weights: output/ppyolo_tiny_650e_coco_exam/model_final
+
+# override:
+TrainReader:
+    batch_size: 64
+
+LearningRate:
+    base_lr: 0.002 
